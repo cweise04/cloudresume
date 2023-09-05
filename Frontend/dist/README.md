@@ -9,9 +9,16 @@ My Resume Challenge Distrubtion
 - counter.js contains visitor counter code.
 
 ## Second Steps
-- Backend folder contains api
-- binding codes for functions app
+- Created a Static Storage website Resource in Azure
+- Created an Endpoint and a CDN for the website
+- Created a DNS name through Name Cheap [DNS Cloud Resume Website Link](https://www.cwcloudresume.me/)
+- Created a Cosmosdb database
 
+
+## Third Steps
+- Backend folder contains page counter code in JavaScript
+
+## Js Code
 window.addEventListener('DOMContentLoaded', (event) => {
     getVisitorCount();
 });
