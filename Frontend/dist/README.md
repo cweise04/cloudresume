@@ -12,5 +12,27 @@ My Resume Challenge Distrubtion
 - Backend folder contains api
 - binding codes for functions app
 
+window.addEventListener('DOMContentLoaded', (event) => {
+    getVisitorCount();
+});
+
+const functionapi = 'https://';
+
+const getVisitorCount = () => {
+    let count = 30;
+    fetch(functionapi).then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            count = data.response;
+            document.getElementById("counter").innerText = count;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
 
 
