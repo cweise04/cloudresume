@@ -71,13 +71,11 @@
     },
     {
       "type": "func",
-      "dependsOn": "build (functions)",
-      "options": {
-        "cwd": "${workspaceFolder}/bin/Debug/net6.0"
-      },
+      "label": "func: host start",
       "command": "host start",
+      "problemMatcher": "$func-python-watch",
       "isBackground": true,
-      "problemMatcher": "$func-dotnet-watch"
+      "dependsOn": "pip install (functions)"
     }
   ]
 }

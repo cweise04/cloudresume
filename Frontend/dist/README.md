@@ -18,7 +18,7 @@ My Resume Challenge Distrubtion
 ## Third Steps
 - Backend folder contains page counter code in JavaScript
 
-## Js Code
+Js Code
 window.addEventListener('DOMContentLoaded', (event) => {
     getVisitorCount();
 });

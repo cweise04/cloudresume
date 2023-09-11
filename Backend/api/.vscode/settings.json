@@ -1,8 +1,8 @@
 {
-  "azureFunctions.deploySubpath": "bin/Release/net6.0/publish",
+  "azureFunctions.deploySubpath": ".",
   "azureFunctions.scmDoBuildDuringDeployment": true,
   "azureFunctions.pythonVenv": ".venv",
-  "azureFunctions.projectLanguage": "C#",
+  "azureFunctions.projectLanguage": "Python",
   "azureFunctions.projectRuntime": "~4",
   "debug.internalConsoleOptions": "neverOpen",
   "azureFunctions.preDeployTask": "publish (functions)"
