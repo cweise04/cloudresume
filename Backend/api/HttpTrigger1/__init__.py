@@ -54,6 +54,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     except Exception as e:
         return func.HttpResponse(
             f"Error: {e}",
-            status_code=500
+            status_code=5003
         )
 
