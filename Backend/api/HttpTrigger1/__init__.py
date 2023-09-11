@@ -32,13 +32,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             ],
             enable_cross_partition_query=True
         ))
-        print('hello6')
         if not items:
             return func.HttpResponse(
                 f"No items found with id: {id_to_update}",
                 status_code=404
             )
-        print('hello7')
         item = items[0]
 
         # Statically define the field name you want to increment and perform the increment
@@ -49,7 +47,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                 f"Field 'count' not found in the item with id: {id_to_update}",
                 status_code=404
             )
-        print('hello8')
         # Update the item
         container.upsert_item(item)
 
