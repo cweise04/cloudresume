@@ -8,18 +8,11 @@ async function updateCount() {
                 'Content-Type': 'application/json' 
             }
         });
-        
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
 
         let data = await response.json();
         countDiv.innerHTML = `This page has been visited ${data.new_count} times.`; 
 
-    } catch (error) {
-        console.error('Error fetching the data:', error);
-        countDiv.innerHTML = "Couldn't read view";
-    }
+    } 
 }
 
 updateCount();
