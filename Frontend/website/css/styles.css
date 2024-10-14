@@ -446,6 +446,11 @@ legend + * {
   -webkit-appearance: textfield;
 }
 
+.resume-section-content {
+    display: block; /* Ensures elements stack on top of each other */
+    width: 100%; /* Prevents side-by-side alignment */
+}
+
 /* rtl:raw:
 [type="tel"],
 [type="url"],
