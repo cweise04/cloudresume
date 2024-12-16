@@ -1,9 +1,3 @@
-cw_resume_dynamodb    = "cw-resume-dynamodb"
-visit_counter_name    = "VisitCounter"
-visit_counter_type    = "S"
-total_visits_name     = "TotalVisits"
-total_visits_value    = 1
-billing_mode          = "PAY_PER_REQUEST"
-cw_resume_s3          = "cwcloudresume-s3"
-domain_name           = "cwcldouresume.me"
-secondary_domain_name = "www.cwcloudresume.me"
+version https://git-lfs.github.com/spec/v1
+oid sha256:0bac58bf13848ee75c225c7032072160377c2d4a67c58a63cd9272359d883fd0
+size 351
