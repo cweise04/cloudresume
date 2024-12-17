@@ -1,0 +1,51 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - terraform/**  # Trigger only when Terraform files are updated
+
+permissions:
+  id-token: write    # Enable OIDC token permissions
+  contents: read     # Read repository contents
+
+jobs:
+  terraform:
+    name: Deploy Infrastructure with Terraform
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout Code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Configure AWS Credentials via OIDC
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::533267317699:role/Cloud_Resume_GitHub_Access
+          role-session-name: GitHubActions
+          aws-region: us-east-1
+
+      # Step 3: Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      # Step 4: Initialize Terraform
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init
+
+      # Step 5: Plan Terraform Changes
+      - name: Terraform Plan
+        working-directory: terraform
+        run: terraform plan
+
+      # Step 6: Apply Terraform Changes
+      - name: Terraform Apply
+        working-directory: terraform
+        run: terraform apply -auto-approve

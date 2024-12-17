@@ -1,0 +1,38 @@
+name: Deploy to S3 and Invalidate CloudFront
+
+on:
+  push:
+    branches:
+      - main   # Trigger on pushes to the main branch
+
+permissions:
+  id-token: write    # Enable OIDC token permissions
+  contents: read     # Read repository contents
+
+jobs:
+  deploy:
+    name: Deploy Frontend to S3 and CloudFront
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout Code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Configure AWS Credentials via OIDC
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::533267317699:role/Cloud_Resume_GitHub_Access
+          role-session-name: GitHubActions
+          aws-region: us-east-1
+
+      # Step 3: Upload Files to S3
+      - name: Sync Files to S3
+        run: |
+          aws s3 sync Frontend/website s3://chrisweise.com --delete
+
+      # Step 4: Invalidate CloudFront Cache
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ESCQDHYFC9IYF --paths "/*"
