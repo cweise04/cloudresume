@@ -12,13 +12,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: aws-actions/configure-aws-cli-credentials@v4
+    - name: Check Out Code
+      uses: actions/checkout@master
+
+    name: Configure AWS CLI
+      uses: aws-actions/configure-aws-cli-credentials@v4
       with: 
         AWS_REGION: 'us-east-1' 
-        role-to-assume: arn:aws:iam::533267317699:role/Cloud_Resume_GitHub_Access
-        SOURCE_DIR: 'website'   
+        role-to-assume: arn:aws:iam::533267317699:role/Cloud_Resume_GitHub_Access  
     
     - name: List S3 Buckets
-      run: "echo >> all S3 buckets"
+      run: |
+      "echo >> all S3 buckets"
       aws s3 ls
