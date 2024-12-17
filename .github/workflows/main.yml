@@ -1,0 +1,24 @@
+name: Upload Website
+
+on:
+  push:
+    branches:
+    - main
+
+permissions:
+    id-token: write
+    contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: aws-actions/configure-aws-cli-credentials@v4
+      with: 
+        AWS_REGION: 'us-east-1' 
+        role-to-assume: arn:aws:iam::533267317699:role/Cloud_Resume_GitHub_Access
+        SOURCE_DIR: 'website'   
+    
+    - name: List S3 Buckets
+      run: "echo >> all S3 buckets"
+      aws s3 ls
